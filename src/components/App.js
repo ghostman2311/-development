@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./ui/Header";
-import { ThemeProvider } from "@material-ui/core/styles";
-import theme from './ui/Theme'
+import { ThemeProvider } from "@material-ui/styles";
+import theme from "./ui/Theme";
 
 const App = () => {
   return (
