@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AppBar, Toolbar, Tabs, Tab, Button } from "@material-ui/core";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import { makeStyles } from "@material-ui/styles";
+import { Link } from "react-router-dom";
 
 import logo from "../../assets/logo.svg";
 
@@ -63,16 +64,43 @@ const Header = (props) => {
               onChange={handleChange}
               className={classes.tabContainer}
             >
-              <Tab className={classes.tab} label="Home" />
-              <Tab className={classes.tab} label="Services" />
-              <Tab className={classes.tab} label="The Revolution" />
-              <Tab className={classes.tab} label="About Us" />
-              <Tab className={classes.tab} label="Contact Us" />
+              <Tab
+                component={Link}
+                to="/"
+                className={classes.tab}
+                label="Home"
+              />
+              <Tab
+                component={Link}
+                to="/services"
+                className={classes.tab}
+                label="Services"
+              />
+              <Tab
+                component={Link}
+                to="/revolution"
+                className={classes.tab}
+                label="The Revolution"
+              />
+              <Tab
+                component={Link}
+                to="/about"
+                className={classes.tab}
+                label="About Us"
+              />
+              <Tab
+                component={Link}
+                to="contact"
+                className={classes.tab}
+                label="Contact Us"
+              />
             </Tabs>
             <Button
               variant="contained"
               color="secondary"
               className={classes.button}
+              component={Link}
+              to="/estimate"
             >
               Free Estimate
             </Button>
