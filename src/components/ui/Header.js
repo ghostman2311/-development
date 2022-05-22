@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { AppBar, Toolbar, Tabs, Tab, Button } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Tabs,
+  Tab,
+  Button,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import { makeStyles } from "@material-ui/styles";
 import { Link } from "react-router-dom";
@@ -54,6 +62,8 @@ const useStyle = makeStyles((theme) => ({
 const Header = (props) => {
   const classes = useStyle();
   const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0) {
@@ -78,6 +88,16 @@ const Header = (props) => {
 
   const handleChange = (e, value) => {
     setValue(value);
+  };
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setOpen(false);
   };
   return (
     <>
@@ -106,10 +126,13 @@ const Header = (props) => {
                 label="Home"
               />
               <Tab
+                aria-owns={anchorEl ? "simple-menu" : undefined}
+                aria-haspopup={anchorEl ? "true" : undefined}
                 component={Link}
                 to="/services"
                 className={classes.tab}
                 label="Services"
+                onMouseOver={(event) => handleClick(event)}
               />
               <Tab
                 component={Link}
@@ -139,6 +162,17 @@ const Header = (props) => {
             >
               Free Estimate
             </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps = {{onMouseLeave: handleClose}}
+            >
+              <MenuItem onClick={handleClose}>Custom Software</MenuItem>
+              <MenuItem onClick={handleClose}>Mobile Apps</MenuItem>
+              <MenuItem onClick={handleClose}>Websites</MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
