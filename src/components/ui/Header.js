@@ -60,7 +60,7 @@ const useStyle = makeStyles((theme) => ({
   menu: {
     backgroundColor: theme.palette.common.blue,
     color: "white",
-    borderRadius: '0px',
+    borderRadius: "0px",
   },
   menuItem: {
     ...theme.typography.tab,
@@ -76,6 +76,7 @@ const Header = (props) => {
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0) {
@@ -111,6 +112,19 @@ const Header = (props) => {
     setAnchorEl(null);
     setOpen(false);
   };
+
+  const handleMenuItemClick = (event, index) => {
+    setAnchorEl(null);
+    setOpen(false);
+    setSelectedIndex(index);
+  };
+
+  const menuOptions = [
+    { name: "Services", link: "/services" },
+    { name: "Custom Software", link: "/customsoftware" },
+    { name: "Mobile Apps", link: "/mobileapps" },
+    { name: "Websites", link: "/websites" },
+  ];
   return (
     <>
       <ElevationScroll>
@@ -183,7 +197,25 @@ const Header = (props) => {
               classes={{ paper: classes.menu }}
               elevation={0}
             >
-              <MenuItem
+              {menuOptions.map((option, index) => {
+                return (
+                  <MenuItem
+                    key={option.name}
+                    component={Link}
+                    to={option.link}
+                    classes={{ root: classes.menuItem }}
+                    onClick={(event) => {
+                      handleMenuItemClick(event, index);
+                      setValue(1);
+                      handleClose();
+                    }}
+                    selected={index === selectedIndex && value === 1}
+                  >
+                    {option.name}
+                  </MenuItem>
+                );
+              })}
+              {/* <MenuItem
                 onClick={() => {
                   handleClose();
                   setValue(1);
@@ -226,7 +258,7 @@ const Header = (props) => {
                 classes={{ root: classes.menuItem }}
               >
                 Websites
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
           </Toolbar>
         </AppBar>
