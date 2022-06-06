@@ -9,10 +9,12 @@ import {
   MenuItem,
   useMediaQuery,
   useScrollTrigger,
+  SwipeableDrawer,
+  IconButton,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/styles";
 import { Link } from "react-router-dom";
-
+import MenuIcon from "@material-ui/icons/Menu";
 import logo from "../../assets/logo.svg";
 
 function ElevationScroll(props) {
@@ -82,6 +84,16 @@ const useStyle = makeStyles((theme) => ({
       opacity: 1,
     },
   },
+  drawerIcon: {
+    height: "50px",
+    width: "50px",
+  },
+  drawerIconContainer: {
+    marginLeft: "auto",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
 }));
 
 const Header = (props) => {
@@ -92,6 +104,7 @@ const Header = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   useEffect(() => {
     switch (window.location.pathname) {
@@ -175,6 +188,29 @@ const Header = (props) => {
     { name: "Mobile Apps", link: "/mobileapps" },
     { name: "Websites", link: "/websites" },
   ];
+
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  const Drawer = (
+    <>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        onOpen={() => setOpenDrawer(true)}
+      >
+        Example Drawer Text
+      </SwipeableDrawer>
+      <IconButton
+        disableRipple
+        onClick={() => setOpenDrawer(!openDrawer)}
+        className={classes.drawerIconContainer}
+      >
+        <MenuIcon className={classes.drawerIcon} />
+      </IconButton>
+    </>
+  );
 
   const tabs = (
     <>
@@ -267,7 +303,7 @@ const Header = (props) => {
             >
               <img className={classes.logo} src={logo} alt="Company logo" />
             </Button>
-            {matches ? null : tabs}
+            {matches ? Drawer : tabs}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
