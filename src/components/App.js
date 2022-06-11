@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./ui/Header";
+import Footer from "./ui/Footer";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./ui/Theme";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -11,11 +12,7 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path="/" component={() => <div>Home</div>} />
-          <Route
-            exact
-            path="/services"
-            component={() => <div>Services</div>}
-          />
+          <Route exact path="/services" component={() => <div>Services</div>} />
           <Route
             exact
             path="/customsoftware"
@@ -26,11 +23,7 @@ const App = () => {
             path="/mobileapps"
             component={() => <div>Mobile Apps</div>}
           />
-          <Route
-            exact
-            path="/websites"
-            component={() => <div>Websites</div>}
-          />
+          <Route exact path="/websites" component={() => <div>Websites</div>} />
           <Route
             exact
             path="/revolution"
@@ -48,6 +41,7 @@ const App = () => {
             component={() => <div>Free Estimate</div>}
           />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
