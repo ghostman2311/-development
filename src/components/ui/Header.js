@@ -119,13 +119,12 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const Header = (props) => {
+  const { value, setValue, selectedIndex, setSelectedIndex } = props;
   const classes = useStyle();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
-  const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const menuOptions = [
@@ -293,7 +292,10 @@ const Header = (props) => {
             component={Link}
             to="/estimate"
             selected={value === 5}
-            classes={{root: classes.drawerItemEstimate, selected: classes.drawerItemSelected}}
+            classes={{
+              root: classes.drawerItemEstimate,
+              selected: classes.drawerItemSelected,
+            }}
           >
             <ListItemText className={classes.drawerItem} disableTypography>
               Free Estimate
