@@ -227,7 +227,7 @@ const Header = (props) => {
     //   default:
     //     break;
     // }
-  }, [menuOptions, routes, selectedIndex, value]);
+  }, [menuOptions, routes, selectedIndex, setSelectedIndex, setValue, value]);
 
   const handleChange = (e, value) => {
     setValue(value);
