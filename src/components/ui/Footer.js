@@ -12,6 +12,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.blue,
     width: "100%",
     zIndex: 1302,
+    position: "relative",
   },
   adornment: {
     width: "25em",
@@ -217,7 +218,12 @@ const Footer = (props) => {
         alt="black adornment"
         src={footerAdornment}
       />
-      <Grid container className={classes.socialContainer} spacing={2} justify="flex-end">
+      <Grid
+        container
+        className={classes.socialContainer}
+        spacing={2}
+        justify="flex-end"
+      >
         <Grid
           item
           component={"a"}
