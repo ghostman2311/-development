@@ -75,6 +75,7 @@ const LandingPage = () => {
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid item>
+        {/*-----Hero Block-----*/}
         <Grid container alignItems="center" justify="flex-end" direction="row">
           <Grid sm item className={classes.heroTextContainer}>
             <Typography variant="h2" align="center">
@@ -105,6 +106,25 @@ const LandingPage = () => {
           </Grid>
           <Grid sm item className={classes.animation}>
             <Lottie options={defaultOptions} width={"100%"} height={"100%"} />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {" "}
+        {/*-----Service Block-----*/}
+        <Grid container direction="row">
+          <Grid item>
+            <Typography variant="h4">Custom Software Development</Typography>
+            <Typography variant="subtitle1">
+              Save Energy. Save Time. Save Money.
+            </Typography>
+            <Typography variant="subtitle1">
+              Complete digital solutions, from investigating to{" "}
+              <span>Celebration</span>
+            </Typography>
+            <Button variant="outlined">
+              <span style={{ marginRight: 10 }}>Learn More</span>
+            </Button>
           </Grid>
         </Grid>
       </Grid>
