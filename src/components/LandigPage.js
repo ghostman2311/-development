@@ -4,6 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/styles";
 import animationData from "../animations/landinganimation/data";
 import { Grid, Button, Typography } from "@material-ui/core";
 import ButtonArrow from "./ButtonArrow";
+import customSoftwareIcon from "../assets/Custom Software Icon.svg";
 
 const useStyle = makeStyles((theme) => ({
   animation: {
@@ -27,16 +28,10 @@ const useStyle = makeStyles((theme) => ({
     },
   },
   learnButtonHero: {
-    borderColor: theme.palette.common.blue,
-    borderWidth: 2,
-    textTransform: "none",
-    borderRadius: 50,
-    fontFamily: "Roboto",
-    fontWeight: "Bold",
+    ...theme.typography.learnButton,
     fontSize: "0.9rem",
     height: 45,
     width: 145,
-    color: theme.palette.common.blue,
   },
   buttonContainer: {
     marginTop: "1em",
@@ -56,6 +51,19 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       marginLeft: 0,
     },
+  },
+  specialText: {
+    color: theme.palette.common.orange,
+    fontFamily: "Pacifico",
+  },
+  learnButton: {
+    ...theme.typography.learnButton,
+    fontSize: "0.7rem",
+    height: 35,
+    padding: 5,
+  },
+  subtitle: {
+    marginBottom: "1em",
   },
 }));
 
@@ -115,16 +123,24 @@ const LandingPage = () => {
         <Grid container direction="row">
           <Grid item>
             <Typography variant="h4">Custom Software Development</Typography>
-            <Typography variant="subtitle1">
+            <Typography variant="subtitle1" className={classes.subtitle}>
               Save Energy. Save Time. Save Money.
             </Typography>
             <Typography variant="subtitle1">
               Complete digital solutions, from investigating to{" "}
-              <span>Celebration</span>
+              <span className={classes.specialText}>Celebration</span>
             </Typography>
-            <Button variant="outlined">
+            <Button variant="outlined" className={classes.learnButton}>
               <span style={{ marginRight: 10 }}>Learn More</span>
+              <ButtonArrow
+                width={10}
+                height={10}
+                fill={theme.palette.common.blue}
+              />
             </Button>
+          </Grid>
+          <Grid item>
+            <img alt="custom software" src={customSoftwareIcon} />
           </Grid>
         </Grid>
       </Grid>
