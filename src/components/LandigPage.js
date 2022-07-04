@@ -5,6 +5,7 @@ import animationData from "../animations/landinganimation/data";
 import { Grid, Button, Typography } from "@material-ui/core";
 import ButtonArrow from "./ButtonArrow";
 import customSoftwareIcon from "../assets/Custom Software Icon.svg";
+import mobileAppIcon from "../assets/mobileIcon.svg";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyle = makeStyles((theme) => ({
@@ -172,6 +173,52 @@ const LandingPage = () => {
               className={classes.icon}
               alt="custom software"
               src={customSoftwareIcon}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {" "}
+        {/*-----iOS/Android Block-----*/}
+        <Grid
+          container
+          direction="row"
+          justify={matchesSM ? "center" : "flex-end"}
+          className={classes.serviceContainer}
+        >
+          <Grid
+            item
+            style={{
+              textAlign: matchesSM ? "center" : undefined,
+            }}
+          >
+            <Typography variant="h4">iOS/Android App development</Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Extend Functionality. Extend Access. Increase Engagement
+            </Typography>
+            <Typography variant="subtitle1">
+              Integrate your web experience or create a standalone App
+              {matchesSM ? null : <br />} with either mobile platform
+            </Typography>
+            <Button variant="outlined" className={classes.learnButton}>
+              <span style={{ marginRight: 10 }}>Learn More</span>
+              <ButtonArrow
+                width={10}
+                height={10}
+                fill={theme.palette.common.blue}
+              />
+            </Button>
+          </Grid>
+          <Grid
+            item
+            style={{
+              marginRight: matchesSM ? 0 : "5em",
+            }}
+          >
+            <img
+              className={classes.icon}
+              alt="Mobile App"
+              src={mobileAppIcon}
             />
           </Grid>
         </Grid>
