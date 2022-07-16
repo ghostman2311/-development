@@ -9,6 +9,7 @@ import mobileAppIcon from "../assets/mobileIcon.svg";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import websiteIcon from "../assets/websiteIcon.svg";
 import revolutionBackground from "../assets/repeatingBackground.svg";
+import infoBackground from "../assets/infoBackground.svg";
 
 const useStyle = makeStyles((theme) => ({
   animation: {
@@ -105,6 +106,14 @@ const useStyle = makeStyles((theme) => ({
       borderRadius: 0,
       width: "100%",
     },
+  },
+  infoBackground: {
+    backgroundImage: `url(${infoBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100%",
+    width: "100%",
   },
 }));
 
@@ -288,6 +297,7 @@ const LandingPage = () => {
           </Grid>
         </Grid>
       </Grid>
+      {/*-----Revolution Block-----*/}
       <Grid item>
         <Grid
           container
@@ -331,6 +341,40 @@ const LandingPage = () => {
             </CardContent>
           </Card>
           <div className={classes.revolutionBackground} />
+        </Grid>
+      </Grid>
+      {/*----- Information Block-----*/}
+      <Grid item>
+        <Grid
+          container
+          direction="row"
+          style={{ height: "80em" }}
+          alignItems="center"
+        >
+          <Grid item style={{ position: "absolute", marginLeft: "5em" }}>
+            <Grid container direction="column">
+              <Typography variant="h2" style={{ color: "white" }}>
+                About Us
+              </Typography>
+              <Typography
+                variant="subtitle"
+                style={{ color: "white", fontSize: "1.25rem", fontWeight: 300 }}
+              >
+                Let's Get Personal
+              </Typography>
+              <Grid item>
+                <Button
+                  variant="outlined"
+                  className={classes.learnButton}
+                  style={{ color: "white", borderColor: "white" }}
+                >
+                  <span style={{ marginRight: 10 }}>Learn More</span>
+                  <ButtonArrow width={10} height={10} fill={"white"} />
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+          <div className={classes.infoBackground} />
         </Grid>
       </Grid>
     </Grid>
